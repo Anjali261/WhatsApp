@@ -65,7 +65,9 @@ const onLoginError = (res) =>{
 
   return (
     <Dialog open={true}
-    PaperProps={{sx:dialogStyle}}>
+    PaperProps={{sx:dialogStyle}}
+    hideBackdrop={true}
+    >
 
     <Component>
         <Container>
