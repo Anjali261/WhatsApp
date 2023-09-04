@@ -2,6 +2,9 @@ import { Dialog,Box, Typography, ListItem , List, styled} from '@mui/material'
 import shadows from '@mui/material/styles/shadows'
 import React from 'react'
 import {qrCodeImage} from '../../constants/data'; 
+import {GoogleLogin} from '@react-oauth/google';
+import jwt_decode from 'jwt-decode'
+
 const Component = styled(Box)`
 display:flex;
 
@@ -46,6 +49,20 @@ const dialogStyle ={
 }
 
 const LoginDialog = () => {
+
+const onLoginSuccess = (res) =>{
+   const decode =  jwt_decode(res.credential);
+   console.log(decode);
+
+
+}
+const onLoginError = (res) =>{
+    console.log('Login Failed', res);
+
+}
+
+
+
   return (
     <Dialog open={true}
     PaperProps={{sx:dialogStyle}}>
@@ -63,8 +80,15 @@ const LoginDialog = () => {
             </ListItem>
         </styleList>
         </Container>
-        <Box>
+        <Box style={{position:'relative'}}>
             <QRCode src={qrCodeImage} alt="qr code" />
+            <Box style={{position:'absolute', top: '50%', transform:`translateX(25%)`}}>
+            <GoogleLogin 
+                onSuccess={onLoginSuccess}
+                onError={onLoginError}
+            
+            />
+            </Box>
         </Box>
     </Component>
     </Dialog>
