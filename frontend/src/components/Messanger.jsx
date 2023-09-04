@@ -17,7 +17,7 @@ box-shadow:none;
 
 
 const Messanger = () => {
-
+//taking value of account from contextAPI
 const {account} = useContext(AccountContext);
 
 
