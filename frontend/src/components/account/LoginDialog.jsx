@@ -7,6 +7,7 @@ import jwt_decode from 'jwt-decode'
 import { useContext } from 'react';
 import { AccountContext } from '../../context/AccountProvider';
 
+import { addUser } from '../../service/api';
 
 const Component = styled(Box)`
 display:flex;
@@ -55,11 +56,13 @@ const LoginDialog = () => {
 
     const { setAccount } =useContext(AccountContext);
 
-const onLoginSuccess = (res) =>{
+const onLoginSuccess = async(res) =>{
    const decode =  jwt_decode(res.credential);
 //    console.log(decode);
 // putting decoded information in setAccount
    setAccount(decode);
+   //calling addUser API to save the login user detail
+   await addUser(decode);
 
 }
 const onLoginError = (res) =>{
