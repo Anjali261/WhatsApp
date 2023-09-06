@@ -1,10 +1,12 @@
-import React from 'react'
+import React  , {useState}from 'react'
 import { useContext } from 'react'
 import { Box , styled} from '@mui/material'
 import { AccountContext } from '../../../context/AccountProvider'
 import {Chat as MessageIcon, MoreVert} from '@mui/icons-material';
 import HistoryToggleOffIcon from '@mui/icons-material/HistoryToggleOff';
 import HeaderMenu from './HeaderMenu';
+import InfoDrower from '../../drawer/InfoDrower';
+
 
 
 
@@ -39,20 +41,28 @@ borderRadius:'50%',
 })
 
 const Header = () => {
+  const {account} = useContext(AccountContext);
 
-    const {account} = useContext(AccountContext)
+    const [openDrawer, setOpenDrawer] = useState(false);
+
+
+    const toggleDrawer = () =>{
+        setOpenDrawer(true);
+    } 
+
   return (
     <>
     
     <Component>
-        <Image src={account.picture} alt="dp" />
+        <Image src={account.picture} alt="" onClick={() =>toggleDrawer()}/>
         <Wrapper>
         <HistoryToggleOffIcon />
 
         <MessageIcon />
-        <HeaderMenu />
+        <HeaderMenu setOpenDrawer={setOpenDrawer} />
         </Wrapper>
     </Component>
+    <InfoDrower open={openDrawer} setOpen={setOpenDrawer}/>
     </>
   )
 }
