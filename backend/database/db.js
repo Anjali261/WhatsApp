@@ -1,6 +1,12 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
+const USERNAME = process.env.DB_USERNAME;
+const PASSWORD = process.env.DB_PASSWORD;
+
 const Connection = async() =>{
-    const URL = `mongodb+srv://mail2anjalisingh2610:wG3jrwhIccyx7xiA@socialmedia.3nl5wz4.mongodb.net/`
+    const URL = `mongodb+srv://${USERNAME}:${PASSWORD}@socialmedia.3nl5wz4.mongodb.net/`
     try{
        await  mongoose.connect(URL, {
         useNewUrlParser:true,
