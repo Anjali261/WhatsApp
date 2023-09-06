@@ -17,13 +17,12 @@ export const addUser = async (request, response) => {
     }
 }
 
-export const getUsers = async(req,res) =>{
-    try{
-      const users= await User.find({});
-      return response.status(200).json(users);
 
-    }catch(error){
-        return res.status(500).json(error.message);
-
+export const getUser = async (request, response) => {
+    try {
+        const user = await User.find({});
+        response.status(200).json(user);
+    } catch (error) {
+        response.status(500).json(error);
     }
 }
