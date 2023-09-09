@@ -22,7 +22,7 @@ const StyleDivider = styled(Divider)`
 
 
 
-const Conversations = () => {
+const Conversations = ({text}) => {
 //multiple objects always comes in array . so passing empty array to useState
     const [users,setUsers]= useState([]);
 
@@ -30,28 +30,13 @@ const Conversations = () => {
 
     useEffect(() =>{
         const fetchData = async() =>{
-           let response = await  getUsers();
-           setUsers(response);
+           let response = await getUsers();
+           const fiteredData = response.filter(user => user.name.toLowerCase().includes(text.toLowerCase()));
+           setUsers(fiteredData);
         }
         fetchData();
-    },[])
+    },[text])
   return (
-//    <Component>
-//     {
-//         users.map(user =>(
-//             //Sub is the unique key
-//             user.sub !== account.sub &&
-//             // data is passed as a prop
-//             <>
-//                <Conversation user ={user} />
-//                <StyleDivider />
-            
-//             </>
-
-//         ))
-    
-//     }
-//    </Component>
 
 
 

@@ -2,8 +2,10 @@ import { Box, Typography, styled } from '@mui/material'
 import React from 'react'
 import {Search } from '@mui/icons-material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { useContext } from 'react';
 
 import { defaultProfilePicture } from '../../../constants/data';
+import { AccountContext } from '../../../context/AccountProvider';
 
 const Header = styled(Box)`
 height: 44px;
@@ -36,15 +38,18 @@ margin-left:auto;
 }
 `
 
-const ChatHeader = () => {
+const ChatHeader = ({person}) => {
+
+  const url = person.picture || defaultProfilePicture;
+
   return (
     <Header>
-      <Image src={defaultProfilePicture} alt="" />
+            <Image src={url} alt="display picture" />     
       <Box>
-        <Name>Nmae</Name>
-        <Status>Online Status</Status>
+        <Name>{person.name}</Name>
+        <Status>Offline</Status>
       </Box>
-      <RightContainer>
+      <RightContainer> 
         <Search />
         <MoreVertIcon />
       </RightContainer>

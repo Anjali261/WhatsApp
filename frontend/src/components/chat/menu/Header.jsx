@@ -40,6 +40,7 @@ borderRadius:'50%',
 
 })
 
+
 const Header = () => {
   const {account} = useContext(AccountContext);
 
