@@ -19,5 +19,7 @@ io.on('connection', (socket) =>{
 
     socket.on("addUser", userData =>{
         addUser(userData , socket.id);
+        //send data from backend to frontend
+        io.emit("getUsers",users);
     })
 })

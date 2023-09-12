@@ -9,7 +9,7 @@ const AccountProvider = ( { children}) =>{
 //store inf of login account globally
 const [account,setAccount] = useState();
 const [person,setPerson] = useState({});
-
+const [activeUser, setActiveUsers] = useState([]);
 
 //establish socket.io through useRef
 const socket = useRef();
