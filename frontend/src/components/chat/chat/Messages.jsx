@@ -25,6 +25,9 @@ const [messages, setMessages] = useState([]);
   const { account } = useContext(AccountContext);
 
 const [newMessageFlag , setNewMessageFlag] = useState(false);
+const [file,setFile] = useState();
+
+
 // Fetch Messages from database
 useEffect(() =>{
   const getMessageDetails = async () =>{
@@ -74,6 +77,8 @@ const sendText = async(e) =>{
       <Footer sendText={sendText}
       setValue= {setValue}
       value={value}
+      file={file}
+      setFile={setFile}
       />
       
 
