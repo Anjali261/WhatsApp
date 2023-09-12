@@ -26,7 +26,7 @@ const Conversations = ({text}) => {
 //multiple objects always comes in array . so passing empty array to useState
     const [users,setUsers]= useState([]);
 
-    const {account } = useContext(AccountContext)
+    const {account , socket } = useContext(AccountContext)
 
     useEffect(() =>{
         const fetchData = async() =>{
@@ -36,6 +36,11 @@ const Conversations = ({text}) => {
         }
         fetchData();
     },[text])
+
+
+    useEffect(() =>{
+        socket.current.emit('addUser', account);
+    })
   return (
 
 
