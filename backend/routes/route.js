@@ -14,5 +14,7 @@ route.post('/message/add', newMessage);
 route.get('/message/get/:id', getMessages);
 
 
-route.post('/file/upload', upload.single("file"), uploadFile)
+route.post('/file/upload', upload.single("file"), uploadFile);
+Router.get('/file/:filename', getImage);
+
 export default route;

@@ -27,7 +27,7 @@ export const downloadMedia =(e, originalImage) =>{
         }).catch(error =>
             console.log("Error downloading the image ", error.message))
         
-
+ 
     }catch(error){
 
     }
