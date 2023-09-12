@@ -43,8 +43,10 @@ useEffect(() =>{
 
 
 useEffect(() =>{
+  scrollRef.current?.scrollIntoView({ transition: 'smooth'})
 
-})
+
+},[messages])
 
 const sendText = async(e) =>{
   let code = e.keyCode || e.which;
@@ -89,7 +91,7 @@ const sendText = async(e) =>{
       <Component>
         {
           messages && messages.map(message =>(
-          <Container>
+          <Container ref={scrollRef}>
           <Message message={message} />
           </Container>
           ))
