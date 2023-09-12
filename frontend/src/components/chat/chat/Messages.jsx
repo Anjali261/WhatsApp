@@ -1,4 +1,4 @@
-import React,{useState , useEffect} from 'react'
+import React,{useState , useEffect , useRef} from 'react'
 import { Box , styled} from '@mui/material';
 import Footer from './Footer';
 import { useContext } from 'react';
@@ -26,7 +26,9 @@ const [messages, setMessages] = useState([]);
 
 const [newMessageFlag , setNewMessageFlag] = useState(false);
 const [file,setFile] = useState();
+const [image,setImage] = useState('');
 
+const scrollRef = useRef();
 
 // Fetch Messages from database
 useEffect(() =>{
@@ -40,10 +42,17 @@ useEffect(() =>{
 },[person._id, conversation?._id , newMessageFlag])
 
 
+useEffect(() =>{
+
+})
+
 const sendText = async(e) =>{
   let code = e.keyCode || e.which;
   if(code === 13){
-    let message ={
+    let message={};
+    if(!file){
+
+    message ={
       senderId: account.sub,
       receiverId:person.sub,
       conversationId: conversation._id, // Add a check here
@@ -53,9 +62,23 @@ const sendText = async(e) =>{
       text:value
  
     }
+  }else {
+     message ={
+      senderId: account.sub,
+      receiverId:person.sub,
+      conversationId: conversation._id, // Add a check here
+
+      // conversationId: conversation ? conversation._id : null, // Add a check here
+      type:'file',
+      text:image
+    
+  }
+}
 
     await newMessages(message);
     setValue('');
+    setFile('');
+    setImage('');
     setNewMessageFlag(prev => !prev)
   }
 
@@ -79,6 +102,7 @@ const sendText = async(e) =>{
       value={value}
       file={file}
       setFile={setFile}
+      setImage={setImage}
       />
       
 
@@ -86,4 +110,5 @@ const sendText = async(e) =>{
   )
 }
 
-export default Messages
+
+export default Messages;
