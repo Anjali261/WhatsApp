@@ -57,7 +57,7 @@ const LoginDialog = () => {
     const { setAccount } =useContext(AccountContext);
 
 const onLoginSuccess = async(res) =>{
-   const decode =  jwt_decode(res.credential);
+   let decode =  jwt_decode(res.credential);
 //    console.log(decode);
 // putting decoded information in setAccount
    setAccount(decode);
@@ -98,7 +98,7 @@ const onLoginError = (res) =>{
                 onSuccess={onLoginSuccess}
                 onError={onLoginError}
             
-            />
+            /> 
             </Box>
         </Box>
     </Component>
