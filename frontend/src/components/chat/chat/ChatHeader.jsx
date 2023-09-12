@@ -7,6 +7,9 @@ import { useContext } from 'react';
 import { defaultProfilePicture } from '../../../constants/data';
 import { AccountContext } from '../../../context/AccountProvider';
 
+import { useContext } from 'react';
+import { AccountContext } from '../../../context/AccountProvider';
+
 const Header = styled(Box)`
 height: 44px;
 background-color:#ededed;
@@ -40,6 +43,9 @@ margin-left:auto;
 
 const ChatHeader = ({person}) => {
 
+  const { activeUsers } = useContext(AccountContext)
+
+
   const url = person.picture || defaultProfilePicture;
 
   return (
@@ -47,7 +53,7 @@ const ChatHeader = ({person}) => {
             <Image src={url} alt="display picture" />     
       <Box>
         <Name>{person.name}</Name>
-        <Status>Offline</Status>
+        <Status>{activeUsers?.find(user=>user.sub === person.sub) ? 'Online' : 'Offline'}</Status>
       </Box>
       <RightContainer> 
         <Search />
