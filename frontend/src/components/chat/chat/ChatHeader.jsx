@@ -1,14 +1,13 @@
 import { Box, Typography, styled } from '@mui/material'
 import React from 'react'
 import {Search } from '@mui/icons-material';
+// import MoreVertIcon from '@mui/icons-material/MoreVert';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useContext } from 'react';
 
 import { defaultProfilePicture } from '../../../constants/data';
 import { AccountContext } from '../../../context/AccountProvider';
 
-import { useContext } from 'react';
-import { AccountContext } from '../../../context/AccountProvider';
 
 const Header = styled(Box)`
 height: 44px;
@@ -57,6 +56,7 @@ const ChatHeader = ({person}) => {
       </Box>
       <RightContainer> 
         <Search />
+        {/* <MoreVertIcon /> */}
         <MoreVertIcon />
       </RightContainer>
     </Header>

@@ -2,24 +2,29 @@ import mongoose from 'mongoose';
 
 const userSchema = mongoose.Schema({
     iss:{
-        type:String
+        type:String,
+        required: true
 
     },
     nbf:{
-        type:Number
+        type:Number,
+        required: true
     },
     aud:{
-        type:String
+        type:String,
+        required: true
     },
     sub:{
         type:String,
         required:true
     },
     email:{
-        type:String
+        type:String,
+        required : true
     },
     email_verified:{
-        type:Boolean
+        type:Boolean,
+        required:true,
     },
     azp:{
         type:String
@@ -38,15 +43,19 @@ const userSchema = mongoose.Schema({
     },
     family_name:{
         type:String,
+        required: true
     },
     iat:{
-        type:String
+        type:String,
+        required: true
     },
     exp:{
-        type:String
+        type:String,
+        required: true,
     },
     jti:{
-        type:String
+        type:String,
+        required: true
     }
 })
 const user = mongoose.model('user', userSchema);

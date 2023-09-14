@@ -45,7 +45,7 @@ const Footer = ({sendText, setValue, value, file, setFile, setImage}) => {
         data.append("name",file.name);
         data.append("file",file);
 
-        let response = await uploadFile(data);
+        const response = await uploadFile(data);
         setImage(response.data);
       }
     }
@@ -56,9 +56,9 @@ const Footer = ({sendText, setValue, value, file, setFile, setImage}) => {
 
 
 const onFileChange = (e) =>{
-  console.log(e);
-  setFile(e.target.file[e]);
-  setValue(e.target.file[0].name)
+  // console.log(e);
+  setValue(e.target.files[0].name)
+  setFile(e.target.file[0]);
 
 }
 
@@ -74,12 +74,7 @@ const onFileChange = (e) =>{
   
   />
 <Search>
-    {/* <InputField placeholder='Type a message'
-    
-    onChange={(e) =>setText(e.target.value) }
-    onKeyPress={(e)=> sendText()}
-
-    /> */}
+  
 
 <InputField
                     placeholder="Type a message"

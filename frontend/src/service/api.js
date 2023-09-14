@@ -3,22 +3,21 @@ const url ='http://localhost:8000';
 //data is body of post api which will come from backend;
 export const addUser = async(data) =>{
     try{
-        await axios.post(`${url}/add`, data);
+       let response =  await axios.post(`${url}/add`, data);
+        return response.data;
 
     }catch(error){
         console.log('Error while addUser API' , error.message);
 
     }
 }
-
 export const getUsers = async() =>{
     try{
        let response =  await axios.get(`${url}/users`)
-       console.log(response);    
+    //    console.log(response);    
        return response.data;
     }catch(error){
         console.log(`Error while calling getUsers api`, error.message);
-
     }
 }
 
@@ -33,9 +32,9 @@ export const setConversation = async(data) =>{
 }
 
 
-export const getConversation= async(data) =>{
+export const getConversation= async(users) =>{
     try{
-       let response =  await axios.post(`${url}/conversation/get`,data)
+       let response =  await axios.post(`${url}/conversation/get`,users)
         return response.data;
     }catch(error){
         console.log(`Error while calling getConversation api`, error.message);
@@ -45,7 +44,7 @@ export const getConversation= async(data) =>{
 
 export const  newMessages = async(data) =>{
     try {
-        await axios.post(`${url}/message/add`,data)
+      return  await axios.post(`${url}/message/add`,data)
 
     }catch(error){
        console.log("Error while calling newMessages api", error.message); 

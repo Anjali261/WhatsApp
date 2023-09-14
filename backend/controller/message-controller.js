@@ -10,7 +10,6 @@ export const newMessage = async (request, response) => {
     } catch (error) {
        return response.status(500).json(error.message);
     }
- 
 }
 
 export const getMessages = async (request, response) => {

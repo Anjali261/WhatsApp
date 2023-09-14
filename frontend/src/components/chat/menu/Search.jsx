@@ -38,8 +38,6 @@ font-size:14px;
 `
 
 
-
-
 const Search = ({setText}) => {
   return (
     <Component>

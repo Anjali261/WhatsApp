@@ -8,7 +8,6 @@ export const addUser = async (request, response) => {
             response.status(200).json('user already exists');
             return;
         }
-
         const newUser = new User(request.body);
         await newUser.save();
         response.status(200).json(newUser);

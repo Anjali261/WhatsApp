@@ -4,7 +4,8 @@ import { newConversation , getConversation} from '../controller/conversation-con
 import { addUser ,getUser} from "../controller/user-controller.js"
 import {  getMessages, newMessage } from '../controller/message-controller.js';
 import { uploadFile } from '../controller/image-controller.js';
-import upload from "../utils/upload.js"
+import upload from "../utils/upload.js";
+import { getImage } from '../controller/image-controller.js';
 
 route.post('/add', addUser);
 route.get('/users', getUser);
@@ -15,6 +16,6 @@ route.get('/message/get/:id', getMessages);
 
 
 route.post('/file/upload', upload.single("file"), uploadFile);
-Router.get('/file/:filename', getImage);
+route.get('/file/:filename', getImage);
 
 export default route;

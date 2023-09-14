@@ -9,7 +9,6 @@ import InfoDrower from '../../drawer/InfoDrower';
 
 
 
-
 const Component = styled(Box)`
 height:44px;
 background:#ededed;

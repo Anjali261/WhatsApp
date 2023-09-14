@@ -8,13 +8,11 @@ const Component = styled(Box)`
 height:100vh;
 background-color: #DCDCDC;
 `
-
 const Header = styled(AppBar)`
 height:125px;
 background-color: #00A884;
 box-shadow:none;
 `
-
 const LoginHeader = styled(AppBar)`
 height:220px;
 background-color: #00bfa5;

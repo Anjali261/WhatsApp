@@ -2,14 +2,11 @@ import React ,{useState}from 'react'
 import { Menu, MenuItem, styled } from '@mui/material'
 import { MoreVert } from '@mui/icons-material'
 
-
 const MenuOption = styled(MenuItem)`
 font-size:14px;
 padding:15px 60px 5px 24px;
 color:#4A4A4A
 `
-
-
 const HeaderMenu = ({setOpenDrawer}) => {
 
     const [open, setOpen] = useState(null);
